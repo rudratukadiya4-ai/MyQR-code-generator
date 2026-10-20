@@ -1,0 +1,158 @@
+/* ---------- Design tokens ---------- */
+:root {
+    --ink: #1f2a44;          /* page background */
+    --ink-soft: #2b3860;
+    --paper: #f7f8fb;        /* card */
+    --line: #d5dae6;
+    --text: #1b2236;
+    --muted: #5b6579;
+    --red: #e5484d;          /* "M" in the logo */
+    --blue: #2f6fed;         /* "y" in the logo */
+    --green: #1a8f5a;
+    --radius: 18px;
+    --font: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+/* ---------- Page ---------- */
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 24px 16px;
+    font-family: var(--font);
+    color: var(--text);
+    background:
+        radial-gradient(circle at 15% 10%, var(--ink-soft), transparent 55%),
+        var(--ink);
+}
+
+/* ---------- Card ---------- */
+.card {
+    width: 100%;
+    max-width: 460px;
+    padding: 32px 28px 28px;
+    background: var(--paper);
+    border-radius: var(--radius);
+    box-shadow: 0 24px 60px rgba(8, 12, 28, 0.45);
+}
+
+.brand { text-align: center; margin-bottom: 24px; }
+
+.logo {
+    margin: 0;
+    font-size: 2.6rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+}
+.logo-m { color: var(--red); font-style: italic; }
+.logo-y { color: var(--blue); }
+
+.tagline { margin: 10px 0 0; color: var(--muted); font-size: 0.95rem; }
+
+/* ---------- Form ---------- */
+.form label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.field { display: flex; gap: 8px; }
+
+#txt {
+    flex: 1;
+    min-width: 0;
+    height: 46px;
+    padding: 0 14px;
+    font: inherit;
+    color: var(--text);
+    background: #fff;
+    border: 2px solid var(--line);
+    border-radius: 12px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+#txt::placeholder { color: #98a1b5; }
+#txt:hover { border-color: var(--green); }
+#txt:focus-visible {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 4px rgba(47, 111, 237, 0.2);
+}
+#txt[aria-invalid="true"] { border-color: var(--red); }
+
+.message {
+    min-height: 1.3em;
+    margin: 8px 0 0;
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+.message.is-error { color: #c0282d; }
+
+/* ---------- Buttons ---------- */
+.btn {
+    height: 46px;
+    padding: 0 18px;
+    font: inherit;
+    font-weight: 600;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.15s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+.btn:active { transform: translateY(1px); }
+.btn:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+.btn:disabled { opacity: 0.6; cursor: progress; }
+
+.btn-primary { color: #fff; background: var(--blue); }
+.btn-primary:hover:not(:disabled) { background: #1f5bd6; }
+
+.btn-secondary { color: var(--blue); background: #fff; border-color: var(--blue); }
+.btn-secondary:hover:not(:disabled) { background: #eaf1ff; }
+
+.btn-ghost { color: var(--muted); background: transparent; border-color: var(--line); }
+.btn-ghost:hover { border-color: var(--muted); }
+
+/* ---------- Result ---------- */
+.result { margin-top: 24px; }
+
+.frame {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    max-width: 300px;
+    aspect-ratio: 1;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    border: 2px solid var(--line);
+    border-radius: 16px;
+}
+.frame.is-empty { border-style: dashed; background: transparent; }
+.frame.is-loading { opacity: 0.6; }
+
+.placeholder { margin: 0; max-width: 18ch; text-align: center; color: var(--muted); font-size: 0.9rem; }
+
+#qrim { display: block; width: 100%; height: auto; }
+#qrim[hidden], .actions[hidden] { display: none; }
+
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 420px) {
+    .card { padding: 24px 18px; }
+    .field { flex-direction: column; }
+    .btn-primary { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+}

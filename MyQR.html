@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyQR - QR code generator</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231f2a44'/%3E%3Ctext x='32' y='45' font-size='36' font-weight='800' text-anchor='middle' font-family='Arial' fill='%23ff6b6f'%3EQ%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="MyQR.css">
+</head>
+<body>
+    <main class="card">
+        <header class="brand">
+            <h1 class="logo"><span class="logo-m">M</span><span class="logo-y">y</span>QR</h1>
+            <p class="tagline">Turn any text or link into a QR code.</p>
+        </header>
+
+        <form id="qr-form" class="form" novalidate>
+            <label for="txt">Text or link</label>
+            <div class="field">
+                <input type="text" id="txt" name="txt" maxlength="900" autocomplete="off"
+                       placeholder="https://example.com" aria-describedby="message" autofocus>
+                <button type="submit" id="generate" class="btn btn-primary">Generate</button>
+            </div>
+            <p id="message" class="message" role="status" aria-live="polite"></p>
+        </form>
+
+        <section class="result" aria-label="QR code preview">
+            <div id="frame" class="frame is-empty">
+                <p id="placeholder" class="placeholder">Your QR code will appear here</p>
+                <img id="qrim" alt="Generated QR code" width="260" height="260" hidden>
+            </div>
+
+            <div id="actions" class="actions" hidden>
+                <button type="button" id="download" class="btn btn-secondary">Download PNG</button>
+                <button type="button" id="clear" class="btn btn-ghost">Clear</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="MyQR.js"></script>
+</body>
+</html>
